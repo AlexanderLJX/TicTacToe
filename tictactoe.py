@@ -27,11 +27,11 @@ class TicTacToe:
         self.historyButton = Button("History", 200, 500, (0, 255, 0))
         self.acceptButton = Button("I'm ready!", 200, 500, (0, 0, 0))
         self.declineButton = Button("Decline", 200, 300, (255, 0, 0))
-        self.backButton = Button("Back", 250, 500, (0, 0, 0))
-        self.readyButton = Button("Ready", 250, 500, (255, 0, 0))
+        self.backButton = Button("Back", 200, 500, (0, 0, 0))
+        self.readyButton = Button("Ready", 200, 400, (255, 0, 0))
         # enterButton for the ip address
-        self.enterButton = Button("Enter", 250, 400, (255, 0, 0))
-        self.rematchButton = Button("Rematch!", 200, 300, (0, 0, 0))
+        self.enterButton = Button("Enter", 200, 350, (255, 0, 0))
+        self.rematchButton = Button("Rematch!", 200, 350, (0, 0, 0))
 
         self.goToMenu = False
 
@@ -130,14 +130,14 @@ class TicTacToe:
         # it will set background color of screen
         self.win.fill((255, 255, 255))
         if not self.readyFlag:
-            font = pygame.font.SysFont("comicsans", 60)
+            font = pygame.font.SysFont("comicsans", 40)
             text = font.render("Click ready to start", 1, (255, 0, 0))
             self.win.blit(text, (100, 50))
             # Draw buttons
             self.readyButton.draw(self.win)
         else:
             # ready button disappear change to you are ready
-            font = pygame.font.SysFont("comicsans", 60)
+            font = pygame.font.SysFont("comicsans", 40)
             text = font.render("Waiting for Opponent", 1, (255, 0, 0), True)
             self.win.blit(text, (self.width / 2 - text.get_width() / 2, self.height / 2 - text.get_height() / 2))
 
@@ -147,7 +147,7 @@ class TicTacToe:
         # it will set background color of screen
         self.win.fill((255, 255, 255))
         # ready button disappear change to you are ready
-        font = pygame.font.SysFont("comicsans", 60)
+        font = pygame.font.SysFont("comicsans", 40)
         text = font.render("Waiting for Opponent", 1, (255, 0, 0), True)
         self.win.blit(text, (self.width / 2 - text.get_width() / 2, self.height / 2 - text.get_height() / 2))
 
@@ -419,7 +419,8 @@ class TicTacToe:
                     self.readyFlag = False
                 if self.buttonClicked["backButton"]:
                     # return to the main menu: reset the whole thing
-                    self.endThread = True
+                    if not self.isServer:
+                        self.endThread = True
                     self.sendClose = True
                     self.goToMenu = True
                 continue
@@ -463,7 +464,7 @@ class TicTacToe:
         # it will set background color of screen
         self.win.fill((255, 255, 255))
 
-        font = pygame.font.SysFont("comicsans", 60)
+        font = pygame.font.SysFont("comicsans", 40)
         text = font.render("Waiting for player...", 1, (255, 0, 0))
         self.win.blit(text, (100, 50))
 
@@ -481,7 +482,7 @@ class TicTacToe:
         # it will set background color of screen
         self.win.fill((255, 255, 255))
 
-        font = pygame.font.SysFont("comicsans", 60)
+        font = pygame.font.SysFont("comicsans", 40)
         text = font.render("Enter ip address:", 1, (255, 0, 0))
         self.win.blit(text, (100, 50))
 

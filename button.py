@@ -8,7 +8,7 @@ class Button:
         self.x = x
         self.y = y
         self.color = color
-        self.width = 150
+        self.width = 200
         self.height = 100
 
     def draw(self, win):
