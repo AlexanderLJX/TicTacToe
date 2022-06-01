@@ -3,12 +3,16 @@
 class Game:
     def __init__(self):
         self.ready = 0
-        self.player = [False,False]
+        self.opponentIsPlayer = -1
+        self.reset = 0
+        self.gameEnd = False
+        self.gameStart = True
         self.wins = [0, 0]
         self.ties = 0
         self.board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
         self.turn = 1
         self.winner = -1
+        self.close = False
 
     # def play(self, player, move):
     #     self.moves[player] = move
@@ -61,6 +65,9 @@ class Game:
 
         if countZero == 0 and self.winner == -1:
             self.winner = 0
+        if self.winner != -1:
+            print("game end")
+            self.gameEnd = True
 
     def logicTest(self, tup1, tup2, tup3):
         if self.board[tup1[0]][tup1[1]] == self.board[tup2[0]][tup2[1]] == self.board[tup3[0]][tup3[1]] == 1:
